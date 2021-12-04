@@ -1,7 +1,6 @@
 # input_list = [l.rstrip('\n') for l in open("test_input.txt","r")]
 input_list = [l.rstrip('\n') for l in open("input.txt", "r")]
 
-boards = []
 numbers = [int(x) for x in input_list[0].split(",")]
 
 success = [[i,i+1,i+2,i+3,i+4] for i in range(0,25,5)]
