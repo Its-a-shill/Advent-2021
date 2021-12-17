@@ -1,7 +1,7 @@
 import math
 
 # bds = [20,30,-10,-5]
-bds = [185,221,-122,-74]
+bds = [188,221,-122,-74]
 
 # Gets the min and max values of initial x vel that land in the box after T timesteps
 def x(bds,T):
@@ -29,19 +29,25 @@ def y(bds,T):
     return min_y0,max_y0
 
 # Turns out this just gives you the y velocity for part 1 haha i hate physics and reading
-print('part 1')
+print('part 1 (highest without considering x)')
 print((-bds[2]-1)*(-bds[2])//2)
 
 # Goes through each pair of things that works
 #  I want to be able to count it more directly, but some trajectories end in the box twice or more
 #  and the inclusion/exclusion for that sounds much more annoying
 hits = set()
+highest = 0
 for t in range(1,-2*bds[2]+2):
     x_range = x(bds,t)
     y_range = y(bds,t)
     for xi in range(x_range[0],x_range[1]+1):
         for yi in range(y_range[0],y_range[1]+1):
+            highest = max(highest,(y_range[1]*(y_range[1]+1))//2)
+
             hits.add((xi,yi))
 
-print('part 2')
+print('\npart 1 (highest with considering x - eric doesn\'t hate us *that* much so it should be the same)')
+print(highest)
+
+print('\npart 2')
 print(len(hits))
